@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import { Link} from "react-router-dom"
 
 function App() {
   const [todos, setTodos] = useState([]);
@@ -38,8 +39,10 @@ function App() {
     <div>
       {todos.map((todo, index) => (
         <div key={index}>
-          {todo.id} {todo.name} {todo.status}
+          {todo.id} {todo.task} {todo.status}
+          <Link to={`/todo/${todo.id}`}>
           <button>Edit</button>
+          </Link>
           <button onClick={async () => {await deleteTodo(todo.id)}}>Delete</button>
         </div>
       ))}
